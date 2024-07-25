@@ -15,10 +15,10 @@ export default function Create(){
                 body : JSON.stringify({title, body})}
             )
             .then(res => res.json())
-            .then(result=>{
-                console.log(result);
+            .then(result=>{ 
                 const lastid = result.id;
                 router.push(`/read/${lastid}`);
+                router.refresh();
             })
         }}>
             <p>

@@ -1,24 +1,14 @@
  import Link from "next/link";
 import "./globals.css";  
+import { Control } from "./Control";
   
 export const metadata = {
   title: "Web tutorials",
   description: "hyjang NextJS Tutorials",
 };
-
-
-function Control(){
-  return(
-      <ul>
-          <li><Link href="/create">Create</Link></li>
-          <li><Link href="/update/1">Update</Link></li>
-          <li><input type="button" value="delete" /></li>
-        </ul>
-  )
-}
-
+ 
 export default async function RootLayout({ children }) { 
-  const resp = await fetch('http://localhost:9999/topics', {cache:'no-store'})
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/topics`, {cache:'no-store'})
   const topics = await resp.json(); 
   return (
     <html>
